@@ -70,6 +70,7 @@ impl NodeManager {
         let alias = alias.map(|a| a.0.into()).unwrap_or_else(random_alias);
 
         info!("Handling request to create inlet portal");
+        debug!(%bind_addr, %alias, ?outlet_route, "Creating inlet portal");
 
         let outlet_route = MultiAddr::from_str(&outlet_route).map_err(map_multiaddr_err)?;
         let outlet_route = match multiaddr_to_route(&outlet_route) {
